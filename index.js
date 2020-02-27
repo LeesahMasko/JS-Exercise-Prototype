@@ -44,9 +44,9 @@ Airplane.prototype.land = function () {
     this.age = age;
     this.stomach = [];
   }
-  Person.prototype.eat = function (edible) {
+  Person.prototype.eat = function (canEat) {
     if (this.stomach.length < 10) {
-      this.stomach.push(edible);
+      this.stomach.push(canEat);
     }
   }
   Person.prototype.poop = function () {
@@ -72,8 +72,14 @@ Airplane.prototype.land = function () {
 */
 
  function Car(model, mpg) {
-    
-  
+    this.model = model;
+    this.milesPerGallon = mpg;
+    this.tank = 0;
+    this.odometer = 0
+  }
+
+  Car.prototype.fill = function (gals) {
+    this.tank = this.tank + gals;
   }
 
 
@@ -85,10 +91,12 @@ Airplane.prototype.land = function () {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
-
-
+  Baby.prototype.play = function () {
+    return `Playing with ${this.favoriteToy}`;
+  }
 /* 
   TASK 4
 
